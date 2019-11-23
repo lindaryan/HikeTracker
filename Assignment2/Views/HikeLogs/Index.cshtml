@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Assignment2.Models.HikeLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Hike Logs</h1>
+<p>
+    <a asp-action="Create">Create New Log</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MountainName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateHiked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeToSummit)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Mountain)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mountain.MountainName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateHiked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeToSummit)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Mountain.Elevation)
+        </td>*@
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.HikeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.HikeId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.HikeId">Delete</a>
+                </td>
+            }
+            </tr>
+        }
+    </tbody>
+</table>
