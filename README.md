@@ -1,4 +1,4 @@
-# comp2084-a2
+# hike-tracker
 Assignment 2
 Hike Tracker App:
 A simple way for hikers to log their hard work and track their progress. 
